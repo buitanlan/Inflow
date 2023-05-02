@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Shared\Inflow.Shared.Abstractions\Inflow.Shared.Abstractions.csproj" />
+        <ProjectReference Include="..\..\..\Shared\Inflow.Shared.Infrastructure\Inflow.Shared.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

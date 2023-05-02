@@ -7,17 +7,17 @@ namespace Inflow.Modules.Customers.Core.Domain.Entities;
 internal class Customer
 {
     public Guid Id { get; private set; }
-    public string Email { get; set; }
-    public string FullName { get; set; }
+    public Email Email { get; private set; }
     public Name Name { get; private set; }
-    public string Address { get; set; }
-    public string Nationality { get; set; }
-    public string Identity { get; set; }
-    public string Notes { get; set; }
-    public bool IsActive { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? CompletedAt { get; set; }
-    public DateTime? VerifiedAt { get; set; }
+    public FullName FullName { get; private set; }
+    public Address Address { get; private set; }
+    public Nationality Nationality { get; private set; }
+    public Identity Identity { get; private set; }
+    public string Notes { get; private set; }
+    public bool IsActive { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime? CompletedAt { get; private set; }
+    public DateTime? VerifiedAt { get; private set; }
 
     private Customer()
     {
