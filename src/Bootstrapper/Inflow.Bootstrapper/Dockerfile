@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["src/Boostrapper/Inflow.Bootstrapper/Inflow.Bootstrapper.csproj", "src/Boostrapper/Inflow.Bootstrapper/"]
 COPY ["src/Modules/Customers/Inflow.Modules.Customers.Api/Inflow.Modules.Customers.Api.csproj", "src/Modules/Customers/Inflow.Modules.Customers.Api/"]
 COPY ["src/Modules/Customers/Inflow.Modules.Customers.Core/Inflow.Modules.Customers.Core.csproj", "src/Modules/Customers/Inflow.Modules.Customers.Core/"]
-RUN dotnet restore "src/Boostrapper/Inflow.Bootstrapper/Inflow.Bootstrapper.csproj"
+RUN dotnet restore "src/Bootstrapper/Inflow.Bootstrapper/Inflow.Bootstrapper.csproj"
 COPY . .
 WORKDIR "/src/src/Boostrapper/Inflow.Bootstrapper"
 RUN dotnet build "Inflow.Bootstrapper.csproj" -c Release -o /app/build
