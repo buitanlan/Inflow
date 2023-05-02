@@ -10,13 +10,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Customers.Api", "src\Modules\Customers\Inflow.Modules.Customers.Api\Inflow.Modules.Customers.Api.csproj", "{518446CE-42B1-4017-A68E-5603A0490347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Bootstrapper", "src\Boostrapper\Inflow.Bootstrapper\Inflow.Bootstrapper.csproj", "{6B6ADF63-70A1-4C6C-A4B4-78BE9333D53B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Bootstrapper", "src\Bootstrapper\Inflow.Bootstrapper\Inflow.Bootstrapper.csproj", "{6B6ADF63-70A1-4C6C-A4B4-78BE9333D53B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Shared.Abstractions", "src\Shared\Inflow.Shared.Abstractions\Inflow.Shared.Abstractions.csproj", "{9D106009-64FA-4307-9A06-ABCE05AE9AB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Customers.Core", "src\Modules\Customers\Inflow.Modules.Customers.Core\Inflow.Modules.Customers.Core.csproj", "{68FEA4A6-E735-4756-B9F8-967414745888}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Shared.Infrastructure", "src\Shared\Inflow.Shared.Infrastructure\Inflow.Shared.Infrastructure.csproj", "{510CA41B-4A86-45DF-80DF-0D7474B9EA18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0650F01F-9D2B-4E93-9698-421BD9FA7A57}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

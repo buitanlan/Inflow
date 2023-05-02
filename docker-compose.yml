@@ -1,0 +1,6 @@
+﻿services:
+  inflow.bootstrapper:
+    image: inflow.bootstrapper
+    build:
+      context: .
+      dockerfile: src/Bootstrapper/Inflow.Bootstrapper/Dockerfile
