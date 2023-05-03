@@ -1,3 +1,5 @@
+#nullable disable
+
 using Inflow.Modules.Customers.Core.Domain.ValueObjects;
 using Inflow.Modules.Customers.Core.Exceptions;
 using Inflow.Shared.Abstractions.Kernel.ValueObjects;
@@ -31,7 +33,7 @@ internal class Customer
         CreatedAt = createdAt;
     }
     
-    public void Complete(Name name, FullName fullName, Address address, Nationality nationality, Identity identity,
+    public void Complete(Name? name, FullName fullName, Address address, Nationality nationality, Identity identity,
         DateTime completedAt)
     {
         if (!IsActive)
