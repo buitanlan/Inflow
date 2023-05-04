@@ -9,13 +9,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Inflow.Shared.Abstractions\Inflow.Shared.Abstractions.csproj" />
     </ItemGroup>
+    
 
     <ItemGroup>
-      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-preview.3.23174.8" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.3" />
       <PackageReference Include="Scrutor" Version="4.2.2" />
