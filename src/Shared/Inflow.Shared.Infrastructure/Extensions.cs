@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Inflow.Shared.Abstractions.Dispatchers;
 using Inflow.Shared.Abstractions.Time;
@@ -15,11 +16,11 @@ namespace Inflow.Shared.Infrastructure;
 
 internal static class Extensions
 {
-    public static IServiceCollection AddModularInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddModularInfrastructure(this IServiceCollection services, IList<Assembly> assemblies)
     {
         services
-            .AddCommands()
-            .AddQueries()
+            .AddCommands(assemblies)
+            .AddQueries(assemblies)
             .AddPostgres()
             .AddSingleton<IClock, UtcClock>()
             .AddSingleton<IDispatcher, InMemoryDispatcher>()

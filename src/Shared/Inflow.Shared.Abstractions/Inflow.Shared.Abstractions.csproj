@@ -5,6 +5,11 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+
+    </ItemGroup>
 
 
 </Project>

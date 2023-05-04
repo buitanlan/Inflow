@@ -1,16 +1,21 @@
-using Inflow.Modules.Customers.Api;
 using Inflow.Shared.Infrastructure;
+using Inflow.Shared.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
+var modules = ModuleLoader.LoadModules(assemblies);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCustomersModule();
-builder.Services.AddModularInfrastructure();
+builder.Services.AddModularInfrastructure(assemblies);
+foreach (var module in modules)
+{
+    module.Register(builder.Services);
+}
 
 var app = builder.Build();
 
@@ -25,8 +30,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseCustomerModule();
-    
+foreach (var module in modules)
+{
+    module.Use(app);
+}
+
 app.MapControllers();
+
 
 app.Run();

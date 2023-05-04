@@ -1,3 +1,4 @@
+using System.Reflection;
 using Inflow.Shared.Abstractions.Queries;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -5,9 +6,8 @@ namespace Inflow.Shared.Infrastructure.Queries;
 
 public static class Extensions
 {
-    public static IServiceCollection AddQueries(this IServiceCollection services)
+    public static IServiceCollection AddQueries(this IServiceCollection services, IList<Assembly> assemblies)
     {
-        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
         services
             .AddSingleton<IQueryDispatcher, QueryDispatcher>()
             .Scan(s => s.FromAssemblies(assemblies)
