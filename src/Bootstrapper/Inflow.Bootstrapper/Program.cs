@@ -12,12 +12,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddModularInfrastructure(assemblies);
+builder.Host.ConfigureModules();
+
 foreach (var module in modules)
 {
     module.Register(builder.Services);
 }
 
 var app = builder.Build();
+
+app.Logger.LogInformation($"Modules: {string.Join(", ", modules.Select(x => x.Name))}");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

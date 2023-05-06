@@ -1,0 +1,8 @@
+{
+  "customers": {
+    "module": {
+      "name": "Customers",
+      "enable": true
+    }
+  }
+}
