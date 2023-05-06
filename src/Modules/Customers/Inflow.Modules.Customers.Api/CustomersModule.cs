@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Inflow.Modules.Customers.Core;
 using Inflow.Shared.Abstractions.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +12,10 @@ internal class CustomersModule : IModule
     public string Name { get; } = "Customers";
     public void Register(IServiceCollection services)
     {
-        services.AddCors();
+        services.AddCore();
     }
 
     public void Use(IApplicationBuilder app)
     {
-        throw new NotImplementedException();
     }
 }

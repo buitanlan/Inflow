@@ -8,6 +8,7 @@ using Inflow.Shared.Infrastructure.Dispatchers;
 using Inflow.Shared.Infrastructure.Postgres;
 using Inflow.Shared.Infrastructure.Queries;
 using Inflow.Shared.Infrastructure.Time;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,18 @@ internal static class Extensions
 {
     public static IServiceCollection AddModularInfrastructure(this IServiceCollection services, IList<Assembly> assemblies)
     {
+        var disabledModules = new List<string>();
+
+        using var scope = services.BuildServiceProvider().CreateScope();
+        var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+        foreach (var (key, value) in configuration.AsEnumerable())
+        {
+            if(!key.Contains(":module:enabled")) continue;
+            if (!bool.Parse(value))
+            {
+                disabledModules.Add(key.Split(":")[0]);
+            }
+        }
         services
             .AddCommands(assemblies)
             .AddQueries(assemblies)
@@ -27,6 +40,19 @@ internal static class Extensions
             .AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {
+                var removedParts = new List<ApplicationPart>();
+                foreach (var disabledModule in disabledModules)
+                {
+                    var parts = manager.ApplicationParts.Where(x => x.Name.Contains(disabledModule));
+                    removedParts.AddRange(parts);
+                }
+
+                foreach (var removedPart in removedParts)
+                {
+                    manager.ApplicationParts.Remove(removedPart);
+
+                }
+
                 manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
         return services;
