@@ -23,6 +23,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{E3F06205-E169-475A-A1DF-805C252F4F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Users.Api", "src\Modules\Users\Inflow.Modules.Users.Api\Inflow.Modules.Users.Api.csproj", "{20775EF2-0B56-4C6E-B22E-6F62903719F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Users.Core", "src\Modules\Users\Inflow.Modules.Users.Core\Inflow.Modules.Users.Core.csproj", "{1D08D60D-F8BA-4456-B432-71CC83EE2240}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +41,9 @@ Global
 		{9D106009-64FA-4307-9A06-ABCE05AE9AB1} = {499A5153-A716-4757-B480-CDA49821932D}
 		{68FEA4A6-E735-4756-B9F8-967414745888} = {37E7DED0-C91A-4315-8054-29D439BA9CB7}
 		{510CA41B-4A86-45DF-80DF-0D7474B9EA18} = {499A5153-A716-4757-B480-CDA49821932D}
+		{E3F06205-E169-475A-A1DF-805C252F4F4C} = {528553FF-DFBF-489A-99A9-957A1DFA000A}
+		{20775EF2-0B56-4C6E-B22E-6F62903719F2} = {E3F06205-E169-475A-A1DF-805C252F4F4C}
+		{1D08D60D-F8BA-4456-B432-71CC83EE2240} = {E3F06205-E169-475A-A1DF-805C252F4F4C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{518446CE-42B1-4017-A68E-5603A0490347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -57,5 +66,13 @@ Global
 		{510CA41B-4A86-45DF-80DF-0D7474B9EA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510CA41B-4A86-45DF-80DF-0D7474B9EA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510CA41B-4A86-45DF-80DF-0D7474B9EA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20775EF2-0B56-4C6E-B22E-6F62903719F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20775EF2-0B56-4C6E-B22E-6F62903719F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20775EF2-0B56-4C6E-B22E-6F62903719F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20775EF2-0B56-4C6E-B22E-6F62903719F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D08D60D-F8BA-4456-B432-71CC83EE2240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D08D60D-F8BA-4456-B432-71CC83EE2240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D08D60D-F8BA-4456-B432-71CC83EE2240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D08D60D-F8BA-4456-B432-71CC83EE2240}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Inflow.Modules.Customers.Core.Commands.Handlers;
 
-internal sealed class CreateCustomerHandler : ICommandHandlers<CreateCustomer>
+internal sealed class CreateCustomerHandler : ICommandHandler<CreateCustomer>
 {
     private readonly ICustomerRepository _customerRepository;
     private readonly ILogger<CreateCustomerHandler> _logger;
