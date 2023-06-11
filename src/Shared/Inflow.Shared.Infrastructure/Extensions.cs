@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using Inflow.Shared.Abstractions.Dispatchers;
 using Inflow.Shared.Abstractions.Time;
 using Inflow.Shared.Infrastructure.Api;
+using Inflow.Shared.Infrastructure.Auth;
 using Inflow.Shared.Infrastructure.Commands;
 using Inflow.Shared.Infrastructure.Dispatchers;
 using Inflow.Shared.Infrastructure.Postgres;
@@ -17,7 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 [assembly: InternalsVisibleTo("Inflow.Bootstrapper")]
 namespace Inflow.Shared.Infrastructure;
 
-internal static class Extensions
+public static class Extensions
 {
     private const string CorrelationIdKey = "correlation-id";
     
@@ -39,6 +40,7 @@ internal static class Extensions
             }
         }
         services
+            .AddAuth()
             .AddMemoryCache()
             .AddCommands(assemblies)
             .AddQueries(assemblies)
@@ -64,6 +66,14 @@ internal static class Extensions
                 manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
         return services;
+    }
+
+    public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)
+    {
+        app.UseAuth();
+        app.UseRouting();
+        app.UseAuthorization();
+        return app;
     }
 
     public static T GetOptions<T>(this IServiceCollection services, string sectionName) where T : class, new()

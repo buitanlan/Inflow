@@ -4,6 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>Preview</LangVersion>
+
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />

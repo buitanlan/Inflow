@@ -6,8 +6,7 @@ using Inflow.Modules.Users.Core.DAL.Repositories;
 using Inflow.Modules.Users.Core.Entities;
 using Inflow.Modules.Users.Core.Repositories;
 using Inflow.Modules.Users.Core.Services;
-using Inflow.Shared.Infrastructure.Postgres;
-// using Inflow.Shared.Infrastructure.Messaging.Outbox;
+using Inflow.Shared.Infrastructure;
 using Inflow.Shared.Infrastructure.Postgres;
 
 [assembly: InternalsVisibleTo("Inflow.Modules.Users.Api")]
@@ -22,8 +21,8 @@ internal static class Extensions
 {
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
-        // var registrationOptions = services.GetOptions<RegistrationOptions>("users:registration");
-        // services.AddSingleton(registrationOptions);
+        var registrationOptions = services.GetOptions<RegistrationOptions>("users:registration");
+        services.AddSingleton(registrationOptions);
 
         return services
             .AddSingleton<IUserRequestStorage, UserRequestStorage>()
@@ -31,8 +30,7 @@ internal static class Extensions
             .AddScoped<IUserRepository, UserRepository>()
             .AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>()
             .AddPostgres<UsersDbContext>()
-            // .AddOutbox<UsersDbContext>()
-            .AddUnitOfWork<UsersUnitOfWork>();
-        // .AddInitializer<UsersInitializer>();
+            .AddUnitOfWork<UsersUnitOfWork>()
+            .AddInitializer<UsersInitializer>();
     }
 }

@@ -3,18 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Inflow.Shared.Infrastructure.Queries;
 
-internal sealed class QueryDispatcher : IQueryDispatcher
+internal sealed class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatcher
 {
-    private readonly IServiceProvider _serviceProvider;
-
-    public QueryDispatcher(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
 
     public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)
     {
-        using var scope = _serviceProvider.CreateScope();
+        using var scope = serviceProvider.CreateScope();
         var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
         var handler = scope.ServiceProvider.GetRequiredService(handlerType);
         var method = handlerType.GetMethod(nameof(IQueryHandler<IQuery<TResult>, TResult>.HandleAsync));

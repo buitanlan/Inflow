@@ -4,6 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>Preview</LangVersion>
         <InvariantGlobalization>true</InvariantGlobalization>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
@@ -19,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Modules\Customers\Inflow.Modules.Customers.Api\Inflow.Modules.Customers.Api.csproj" />
+      <ProjectReference Include="..\..\Modules\Users\Inflow.Modules.Users.Api\Inflow.Modules.Users.Api.csproj" />
       <ProjectReference Include="..\..\Shared\Inflow.Shared.Infrastructure\Inflow.Shared.Infrastructure.csproj" />
     </ItemGroup>
 
