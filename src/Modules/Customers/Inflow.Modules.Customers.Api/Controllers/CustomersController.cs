@@ -1,7 +1,6 @@
 using Inflow.Modules.Customers.Core.Commands;
 using Inflow.Modules.Customers.Core.DTO;
 using Inflow.Modules.Customers.Core.Queries;
-using Inflow.Shared.Abstractions.Commands;
 using Inflow.Shared.Abstractions.Dispatchers;
 using Microsoft.AspNetCore.Mvc;
 

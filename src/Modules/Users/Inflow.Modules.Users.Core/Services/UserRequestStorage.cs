@@ -1,5 +1,4 @@
-﻿using System;
-using Inflow.Shared.Abstractions.Auth;
+﻿using Inflow.Shared.Abstractions.Auth;
 using Inflow.Shared.Abstractions.Storage;
 
 namespace Inflow.Modules.Users.Core.Services;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Inflow.Modules.Users.Core.DTO;
+﻿namespace Inflow.Modules.Users.Core.DTO;
 
 public class UserDto
 {

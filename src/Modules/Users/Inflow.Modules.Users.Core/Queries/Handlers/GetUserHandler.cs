@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Inflow.Modules.Users.Core.DAL;
 using Inflow.Modules.Users.Core.DTO;
 using Inflow.Shared.Abstractions.Queries;

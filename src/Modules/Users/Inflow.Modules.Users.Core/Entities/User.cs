@@ -1,4 +1,3 @@
-using System;
 using Inflow.Shared.Abstractions.Kernel.ValueObjects;
 
 namespace Inflow.Modules.Users.Core.Entities;

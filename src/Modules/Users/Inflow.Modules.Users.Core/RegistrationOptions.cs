@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Inflow.Modules.Users.Core;
+﻿namespace Inflow.Modules.Users.Core;
 
 public class  RegistrationOptions
 {

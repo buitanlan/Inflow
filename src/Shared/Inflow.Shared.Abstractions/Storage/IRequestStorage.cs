@@ -1,5 +1,3 @@
-using System;
-
 namespace Inflow.Shared.Abstractions.Storage;
 
 public interface IRequestStorage

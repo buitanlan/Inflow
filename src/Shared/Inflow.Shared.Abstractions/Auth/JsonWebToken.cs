@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Inflow.Shared.Abstractions.Auth;
 
 public class JsonWebToken

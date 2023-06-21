@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Inflow.Modules.Users.Core.Entities;
 using Inflow.Modules.Users.Core.Repositories;
 
@@ -17,7 +15,7 @@ internal class RoleRepository : IRoleRepository
         _roles = context.Roles;
     }
 
-    public Task<Role> GetAsync(string name) => _roles.SingleOrDefaultAsync(x => x.Name == name);
+    public async Task<Role> GetAsync(string name) => await _roles.SingleOrDefaultAsync(x => x.Name == name);
 
     public async Task<IReadOnlyList<Role>> GetAllAsync() => await _roles.ToListAsync();
         

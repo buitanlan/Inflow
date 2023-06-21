@@ -1,5 +1,4 @@
-﻿using System;
-using Inflow.Shared.Abstractions.Commands;
+﻿using Inflow.Shared.Abstractions.Commands;
 
 namespace Inflow.Modules.Users.Core.Commands;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Inflow.Shared.Abstractions.Commands;
 
 namespace Inflow.Modules.Users.Core.Commands;

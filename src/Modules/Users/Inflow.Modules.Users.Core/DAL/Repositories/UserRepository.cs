@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Inflow.Modules.Users.Core.Entities;
 using Inflow.Modules.Users.Core.Repositories;
 

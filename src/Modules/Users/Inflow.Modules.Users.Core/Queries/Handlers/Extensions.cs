@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Inflow.Modules.Users.Core.DTO;
+﻿using Inflow.Modules.Users.Core.DTO;
 using Inflow.Modules.Users.Core.Entities;
 
 namespace Inflow.Modules.Users.Core.Queries.Handlers;

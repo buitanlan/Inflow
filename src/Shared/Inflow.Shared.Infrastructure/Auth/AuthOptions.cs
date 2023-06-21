@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Inflow.Shared.Infrastructure.Auth;
 
 public class AuthOptions

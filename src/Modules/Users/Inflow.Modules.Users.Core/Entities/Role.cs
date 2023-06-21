@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Inflow.Modules.Users.Core.Entities;
+﻿namespace Inflow.Modules.Users.Core.Entities;
 
 internal class Role
 {
