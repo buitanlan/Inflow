@@ -1,7 +1,7 @@
 using Inflow.Shared.Infrastructure.Api;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Inflow.Modules.Users.Api;
+namespace Inflow.Modules.Users.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
