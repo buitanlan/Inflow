@@ -12,7 +12,6 @@ internal sealed class JsonModuleSerializer : IModuleSerializer
 
     public byte[] Serialize<T>(T value) => JsonSerializer.SerializeToUtf8Bytes(value, SerializerOptions);
 
-
     public T Deserialize<T>(byte[] value) =>  JsonSerializer.Deserialize<T>(value, SerializerOptions);
 
     public object Deserialize(byte[] value, Type type) => JsonSerializer.Deserialize(value,type, SerializerOptions);

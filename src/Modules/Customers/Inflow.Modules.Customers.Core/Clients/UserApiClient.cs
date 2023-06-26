@@ -1,5 +1,4 @@
 using Inflow.Modules.Customers.Core.Clients.DTO;
-using Inflow.Shared.Abstractions.Dispatchers;
 using Inflow.Shared.Abstractions.Modules;
 
 namespace Inflow.Modules.Customers.Core.Clients;

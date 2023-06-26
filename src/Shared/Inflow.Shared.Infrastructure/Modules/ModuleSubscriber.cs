@@ -1,4 +1,3 @@
-using Inflow.Shared.Abstractions.Kernel;
 using Inflow.Shared.Abstractions.Modules;
 using Microsoft.Extensions.DependencyInjection;
 
