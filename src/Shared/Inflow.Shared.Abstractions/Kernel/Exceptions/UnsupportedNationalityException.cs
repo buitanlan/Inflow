@@ -2,12 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Shared.Abstractions.Kernel.Exceptions;
 
-public class UnsupportedNationalityException : InflowException
+public class UnsupportedNationalityException(string nationality) : InflowException($"Nationality: '{nationality}' is unsupported.")
 {
-    public string Nationality { get; }
-
-    public UnsupportedNationalityException(string nationality) : base($"Nationality: '{nationality}' is unsupported.")
-    {
-        Nationality = nationality;
-    }
+    public string Nationality { get; } = nationality;
 }

@@ -6,6 +6,18 @@ internal static class Extensions
 {
     public static IServiceCollection AddMessaging(this IServiceCollection services)
     {
-        return services.AddTransient<IMessageBroker, InMemoryMessageBroker>();
+        services.AddTransient<IMessageBroker, InMemoryMessageBroker>();
+        services.AddSingleton<IMessageChannel, IMessageChannel>();
+        services.AddSingleton<IAsyncMessageDispatcher, AsyncMessageDispatcher>();
+
+        var messagingOptions = services.GetOptions<MessagingOptions>("messaging");
+        services.AddSingleton(messagingOptions);
+
+        if (messagingOptions.UseAsyncDispatcher)
+        {
+            services.AddHostedService<AsyncDispatcherJob>();
+        }
+
+        return services;
     }
 }

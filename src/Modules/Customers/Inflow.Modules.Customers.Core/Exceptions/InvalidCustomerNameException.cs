@@ -2,13 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Modules.Customers.Core.Exceptions;
 
-internal class InvalidCustomerNameException : InflowException
+internal class InvalidCustomerNameException(Guid customerId) : InflowException($"Customer with ID: '{customerId}' has invalid name.")
 {
-    public Guid CustomerId { get; }
-
-    public InvalidCustomerNameException(Guid customerId)
-        : base($"Customer with ID: '{customerId}' has invalid name.")
-    {
-        CustomerId = customerId;
-    }
+    public Guid CustomerId { get; } = customerId;
 }

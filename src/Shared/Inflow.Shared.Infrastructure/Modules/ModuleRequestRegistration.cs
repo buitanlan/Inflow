@@ -1,15 +1,8 @@
 namespace Inflow.Shared.Infrastructure.Modules;
 
-internal class ModuleRequestRegistration
+internal class ModuleRequestRegistration(Type requestType, Type responceType, Func<object, CancellationToken, Task<object>> action)
 {
-    public Type RequestType { get;}
-    public Type ResponceType { get; }
-    public Func<object, CancellationToken, Task<object>> Action { get; }
-
-    public ModuleRequestRegistration(Type requestType, Type responceType, Func<object, CancellationToken, Task<object>> action)
-    {
-        RequestType = requestType;
-        ResponceType = responceType;
-        Action = action;
-    }
+    public Type RequestType { get;} = requestType;
+    public Type ResponceType { get; } = responceType;
+    public Func<object, CancellationToken, Task<object>> Action { get; } = action;
 }

@@ -26,6 +26,11 @@ internal sealed class CreateCustomerHandler(
             throw new UserNotFoundException(command.Email);
         }
 
+        if (user.Role is not "user")
+        {
+            return;
+        }
+
         var customerId = user.UserId;
         if (await customerRepository.GetAsync(customerId) is not null)
         {

@@ -4,16 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Inflow.Modules.Customers.Core.DAL.Repositories;
 
-internal class CustomersRepository : ICustomerRepository
+internal class CustomersRepository(CustomersDbContext context) : ICustomerRepository
 {
-    private readonly CustomersDbContext _context;
-    private readonly DbSet<Customer> _customers;
-
-    public CustomersRepository(CustomersDbContext context)
-    {
-        _context = context;
-        _customers = context.Customers;
-    }
+    private readonly DbSet<Customer> _customers = context.Customers;
 
     public async Task<bool> ExistsAsync(string name) =>await _customers.AnyAsync(x => x.Name == name);
     
@@ -23,12 +16,12 @@ internal class CustomersRepository : ICustomerRepository
     public async Task AddAsync(Customer customer)
     {
         await _customers.AddAsync(customer);
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(Customer customer)
     {
         _customers.Update(customer);
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 }

@@ -2,12 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Modules.Users.Core.Exceptions;
 
-internal class UserNotActiveException : InflowException
+internal class UserNotActiveException(Guid userId) : InflowException($"User with ID: '{userId}' is not active.")
 {
-    public Guid UserId { get; }
-
-    public UserNotActiveException(Guid userId) : base($"User with ID: '{userId}' is not active.")
-    {
-        UserId = userId;
-    }
+    public Guid UserId { get; } = userId;
 }

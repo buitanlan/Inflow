@@ -2,12 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Shared.Abstractions.Kernel.Exceptions;
 
-public class InvalidFullNameException : InflowException
+public class InvalidFullNameException(string fullName) : InflowException($"Full name: '{fullName}' is invalid.")
 {
-    public string FullName { get; }
-
-    public InvalidFullNameException(string fullName) : base($"Full name: '{fullName}' is invalid.")
-    {
-        FullName = fullName;
-    }
+    public string FullName { get; } = fullName;
 }

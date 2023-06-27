@@ -1,14 +1,8 @@
 ﻿namespace Inflow.Shared.Infrastructure.Modules;
 
-public class ModuleBroadcastRegistration
+public class ModuleBroadcastRegistration(Type receiverType, Func<object, CancellationToken, Task> action)
 {
-    public ModuleBroadcastRegistration(Type receiverType, Func<object, CancellationToken, Task> action)
-    {
-        ReceiverType = receiverType;
-        Action = action;
-    }
-
-    public Type ReceiverType { get; }
-    public Func<object, CancellationToken, Task> Action { get; }
+    public Type ReceiverType { get; } = receiverType;
+    public Func<object, CancellationToken, Task> Action { get; } = action;
     public string Key => ReceiverType.Name;
 }

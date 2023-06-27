@@ -2,12 +2,7 @@
 
 namespace Inflow.Modules.Users.Core.Exceptions;
 
-internal class InvalidEmailException : InflowException
+internal class InvalidEmailException(string email) : InflowException($"State is invalid: '{email}'.")
 {
-    public string Email { get; }
-
-    public InvalidEmailException(string email) : base($"State is invalid: '{email}'.")
-    {
-        Email = email;
-    }
+    public string Email { get; } = email;
 }
