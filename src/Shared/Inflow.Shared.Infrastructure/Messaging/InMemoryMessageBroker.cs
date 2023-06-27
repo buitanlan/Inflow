@@ -4,7 +4,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Inflow.Shared.Infrastructure.Messaging;
 
-internal sealed class InMemoryMessageBroker(IModuleClient moduleClient, ILogger<InMemoryMessageBroker> logger) : IMessageBroker
+internal sealed class InMemoryMessageBroker(
+    IModuleClient moduleClient,
+    MessagingOptions messagingOptions,
+    IAsyncMessageDispatcher asyncMessageDispatcher,
+    ILogger<InMemoryMessageBroker> logger) : IMessageBroker
 {
     public Task PublishAsync(IMessage message, CancellationToken cancellationToken = default)
         => PublishAsync(cancellationToken, message);
@@ -20,7 +24,9 @@ internal sealed class InMemoryMessageBroker(IModuleClient moduleClient, ILogger<
         messages = messages.Where(x => x is not null).ToArray();
         if(!messages.Any()) return;
 
-        var tasks = messages.Select(x => moduleClient.PublishAsync(x, cancellationToken));
+        var tasks = messagingOptions.UseAsyncDispatcher
+            ? messages.Select(x => asyncMessageDispatcher.PublishAsync(x, cancellationToken))
+            : messages.Select(x => moduleClient.PublishAsync(x, cancellationToken));
         await Task.WhenAll(tasks);
     }
 }

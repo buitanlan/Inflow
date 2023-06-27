@@ -2,9 +2,4 @@
 
 namespace Inflow.Modules.Users.Core.Exceptions;
 
-internal class InvalidCredentialsException : InflowException
-{
-    public InvalidCredentialsException() : base("Invalid credentials.")
-    {
-    }
-}
+internal class InvalidCredentialsException() : InflowException("Invalid credentials.");

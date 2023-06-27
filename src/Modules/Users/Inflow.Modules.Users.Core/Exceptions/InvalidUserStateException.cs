@@ -2,12 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Modules.Users.Core.Exceptions;
 
-internal class InvalidUserStateException : InflowException
+internal class InvalidUserStateException(string state) : InflowException($"User state is invalid: '{state}'.")
 {
-    public string State { get; }
-
-    public InvalidUserStateException(string state) : base($"User state is invalid: '{state}'.")
-    {
-        State = state;
-    }
+    public string State { get; } = state;
 }

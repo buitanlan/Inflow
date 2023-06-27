@@ -2,12 +2,7 @@ using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Modules.Customers.Core.Exceptions;
 
-internal class InvalidAddressException: InflowException
+internal class InvalidAddressException(string address) : InflowException($"Address: '{address}' is invalid.")
 {
-    public string Address { get; }
-
-    public InvalidAddressException(string address) : base($"Address: '{address}' is invalid.")
-    {
-        Address = address;
-    }
+    public string Address { get; } = address;
 }
