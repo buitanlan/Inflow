@@ -1,4 +1,5 @@
-using Inflow.Shared.Abstractions.Commands;
+﻿using Inflow.Shared.Abstractions.Commands;
 
 namespace Inflow.Modules.Customers.Core.Commands;
-public record CreateCustomer(string Email) : ICommand;
+
+internal record CreateCustomer(string Email) : ICommand;

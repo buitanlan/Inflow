@@ -1,4 +1,4 @@
-using Inflow.Modules.Customers.Core.Clients;
+﻿using Inflow.Modules.Customers.Core.Clients;
 using Inflow.Modules.Customers.Core.Domain.Entities;
 using Inflow.Modules.Customers.Core.Domain.Repositories;
 using Inflow.Modules.Customers.Core.Exceptions;
@@ -34,7 +34,7 @@ internal sealed class CreateCustomerHandler(
         var customerId = user.UserId;
         if (await customerRepository.GetAsync(customerId) is not null)
         {
-            throw new CustomerAlreadyException(customerId);
+            throw new CustomerAlreadyExistsException(customerId);
         }
         var customer = new Customer(Guid.NewGuid(), command.Email, clock.CurrentDate());
         await customerRepository.AddAsync(customer);

@@ -7,7 +7,7 @@ internal static class Extensions
     public static IServiceCollection AddMessaging(this IServiceCollection services)
     {
         services.AddTransient<IMessageBroker, InMemoryMessageBroker>();
-        services.AddSingleton<IMessageChannel, IMessageChannel>();
+        services.AddSingleton<IMessageChannel, MessageChannel>();
         services.AddSingleton<IAsyncMessageDispatcher, AsyncMessageDispatcher>();
 
         var messagingOptions = services.GetOptions<MessagingOptions>("messaging");
