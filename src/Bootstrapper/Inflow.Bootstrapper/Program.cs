@@ -1,4 +1,5 @@
 using Inflow.Shared.Infrastructure;
+using Inflow.Shared.Infrastructure.Contracts;
 using Inflow.Shared.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,8 @@ foreach (var module in modules)
 {
     module.Use(app);
 }
+
+app.ValidateContracts(assemblies);
 
 app.MapControllers();
 

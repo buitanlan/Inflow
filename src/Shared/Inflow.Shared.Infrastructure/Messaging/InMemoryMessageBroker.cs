@@ -19,14 +19,14 @@ internal sealed class InMemoryMessageBroker(
 
     private async Task PublishAsync(CancellationToken cancellationToken, params IMessage[] messages)
     {
-        if (messages is null) return;
 
-        messages = messages.Where(x => x is not null).ToArray();
-        if(!messages.Any()) return;
+        messages = messages?.Where(x => x is not null).ToArray();
+        if( messages is { Length: <= 0}) return;
 
         var tasks = messagingOptions.UseAsyncDispatcher
             ? messages.Select(x => asyncMessageDispatcher.PublishAsync(x, cancellationToken))
             : messages.Select(x => moduleClient.PublishAsync(x, cancellationToken));
+
         await Task.WhenAll(tasks);
     }
 }

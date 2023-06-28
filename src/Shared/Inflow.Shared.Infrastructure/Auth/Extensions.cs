@@ -16,7 +16,9 @@ public static class Extensions
     private const string AccessTokenCookieName = "__access-token";
     private const string AuthorizationHeader = "authorization";
 
-    public static IServiceCollection AddAuth(this IServiceCollection services, IList<IModule> modules = null,
+    public static IServiceCollection AddAuth(
+        this IServiceCollection services,
+        IList<IModule> modules = null,
         Action<JwtBearerOptions> optionsFactory = null)
     {
         var options = services.GetOptions<AuthOptions>("auth");
