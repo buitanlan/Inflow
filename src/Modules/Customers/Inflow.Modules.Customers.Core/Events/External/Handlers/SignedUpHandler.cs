@@ -1,7 +1,6 @@
 ﻿using Inflow.Modules.Customers.Core.Domain.Entities;
 using Inflow.Modules.Customers.Core.Domain.Repositories;
 using Inflow.Modules.Customers.Core.Exceptions;
-using Inflow.Modules.Users.Core.Events.External;
 using Inflow.Shared.Abstractions.Events;
 using Inflow.Shared.Abstractions.Time;
 using Microsoft.Extensions.Logging;
