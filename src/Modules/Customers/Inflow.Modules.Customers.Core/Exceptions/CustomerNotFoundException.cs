@@ -1,5 +1,4 @@
-﻿using System;
-using Inflow.Shared.Abstractions.Exceptions;
+﻿using Inflow.Shared.Abstractions.Exceptions;
 
 namespace Inflow.Modules.Customers.Core.Exceptions;
 

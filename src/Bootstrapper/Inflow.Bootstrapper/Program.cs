@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
-var modules = ModuleLoader.LoadModules(assemblies);
+var modules = ModuleLoader.LoadModules(assemblies).ToList();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,10 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddModularInfrastructure(assemblies);
 builder.Host.ConfigureModules();
 
-foreach (var module in modules)
-{
-    module.Register(builder.Services);
-}
+modules.ForEach(m => m.Register(builder.Services));
 
 var app = builder.Build();
 
@@ -35,10 +32,7 @@ app.UseHttpsRedirection();
 
 app.UseModularInfrastructure();
 
-foreach (var module in modules)
-{
-    module.Use(app);
-}
+modules.ForEach(m => m.Use(app));
 
 app.ValidateContracts(assemblies);
 
