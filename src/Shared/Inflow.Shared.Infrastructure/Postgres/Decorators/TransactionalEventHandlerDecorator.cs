@@ -6,10 +6,12 @@ using Inflow.Shared.Abstractions.Events;
 namespace Inflow.Shared.Infrastructure.Postgres.Decorators;
 
 [Decorator]
-public class TransactionalEventHandlerDecorator<T>(IEventHandler<T> handler, UnitOfWorkTypeRegistry unitOfWorkTypeTypeRegistry,
-    IServiceProvider serviceProvider, ILogger<TransactionalEventHandlerDecorator<T>> logger) : IEventHandler<T> where T : class, IEvent
+public class TransactionalEventHandlerDecorator<T>(
+    IEventHandler<T> handler,
+    UnitOfWorkTypeRegistry unitOfWorkTypeTypeRegistry,
+    IServiceProvider serviceProvider,
+    ILogger<TransactionalEventHandlerDecorator<T>> logger) : IEventHandler<T> where T : class, IEvent
 {
-
     public async Task HandleAsync(T @event, CancellationToken cancellationToken = default)
     {
         var unitOfWorkType = unitOfWorkTypeTypeRegistry.Resolve<T>();

@@ -7,13 +7,12 @@ namespace Inflow.Shared.Infrastructure.Postgres;
 
 internal sealed class DbContextAppInitializer(IServiceProvider serviceProvider, ILogger<DbContextAppInitializer> logger) : IHostedService
 {
-
-
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         var dbContextTypes = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(x => x.GetTypes())
             .Where(x => typeof(DbContext).IsAssignableFrom(x) && !x.IsInterface && x != typeof(DbContext));
+
         using var scope = serviceProvider.CreateScope();
         foreach (var dbContextType in dbContextTypes)
         {

@@ -40,7 +40,7 @@ public static class Extensions
         foreach (var (key, value) in configuration.AsEnumerable())
         {
             if(!key.Contains(":module:enabled")) continue;
-            if (!bool.Parse(value))
+            if (!bool.Parse(value ?? "false"))
             {
                 disabledModules.Add(key.Split(":")[0]);
             }

@@ -1,22 +1,21 @@
+using Inflow.Modules.Payments.Core.Deposits.Commands;
+using Inflow.Modules.Payments.Core.Deposits.DTO;
+using Inflow.Modules.Payments.Core.Deposits.Queries;
+using Inflow.Shared.Abstractions.Contexts;
+using Inflow.Shared.Abstractions.Dispatchers;
+using Inflow.Shared.Abstractions.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Inflow.Modules.Payments.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-internal class DepositsController : Controller
+internal class DepositsController(IDispatcher dispatcher, IContext context) : Controller
 {
     private const string Policy = "deposits";
-    private readonly IDispatcher _dispatcher;
-    private readonly IContext _context;
-
-    public DepositsController(IDispatcher dispatcher, IContext context)
-    {
-        _dispatcher = dispatcher;
-        _context = context;
-    }
 
     [HttpGet]
     [Authorize]
@@ -26,13 +25,13 @@ internal class DepositsController : Controller
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<Paged<DepositDto>>> BrowseAsync([FromQuery] BrowseDeposits query)
     {
-        if (query.CustomerId.HasValue || _context.Identity.IsUser())
+        if (query.CustomerId.HasValue || context.Identity.IsUser())
         {
             // Customer cannot access the other deposits
-            query.CustomerId = _context.Identity.IsUser() ? _context.Identity.Id : query.CustomerId;
+            query.CustomerId = context.Identity.IsUser() ? context.Identity.Id : query.CustomerId;
         }
 
-        return Ok(await _dispatcher.QueryAsync(query));
+        return Ok(await dispatcher.QueryAsync(query));
     }
 
     [HttpPost]
@@ -43,7 +42,7 @@ internal class DepositsController : Controller
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult> Post(StartDeposit command)
     {
-        await _dispatcher.SendAsync(command.Bind(x => x.CustomerId, _context.Identity.Id));
+        await dispatcher.SendAsync(command.Bind(x => x.CustomerId, context.Identity.Id));
         return NoContent();
     }
 
@@ -54,7 +53,7 @@ internal class DepositsController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Post(Guid depositId, CompleteDeposit command)
     {
-        await _dispatcher.SendAsync(command.Bind(x => x.DepositId, depositId));
+        await dispatcher.SendAsync(command.Bind(x => x.DepositId, depositId));
         return NoContent();
     }
 }
