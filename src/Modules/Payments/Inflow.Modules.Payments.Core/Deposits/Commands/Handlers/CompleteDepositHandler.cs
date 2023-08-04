@@ -4,8 +4,8 @@ using Inflow.Modules.Payments.Core.Deposits.Exceptions;
 using Inflow.Modules.Payments.Core.Deposits.Repositories;
 using Inflow.Shared.Abstractions.Commands;
 using Inflow.Shared.Abstractions.Events;
+using Inflow.Shared.Abstractions.Messaging;
 using Inflow.Shared.Abstractions.Time;
-using Inflow.Shared.Infrastructure.Messaging;
 using Microsoft.Extensions.Logging;
 
 namespace Inflow.Modules.Payments.Core.Deposits.Commands.Handlers;

@@ -3,8 +3,8 @@ using Inflow.Modules.Customers.Core.Events;
 using Inflow.Modules.Customers.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 using Inflow.Shared.Abstractions.Commands;
+using Inflow.Shared.Abstractions.Messaging;
 using Inflow.Shared.Abstractions.Time;
-using Inflow.Shared.Infrastructure.Messaging;
 
 namespace Inflow.Modules.Customers.Core.Commands.Handlers;
 

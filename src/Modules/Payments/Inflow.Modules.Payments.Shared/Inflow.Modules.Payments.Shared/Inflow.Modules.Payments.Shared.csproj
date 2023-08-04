@@ -11,5 +11,4 @@
       <ProjectReference Include="..\..\..\..\Shared\Inflow.Shared.Abstractions\Inflow.Shared.Abstractions.csproj" />
     </ItemGroup>
 
-
 </Project>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Inflow.Shared.Abstractions.Messaging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Inflow.Shared.Infrastructure.Messaging;
 

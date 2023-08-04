@@ -1,21 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using Inflow.Modules.Payments.Core.Withdrawals.Domain.Entities;
+﻿using Inflow.Modules.Payments.Core.Withdrawals.Domain.Entities;
 using Inflow.Modules.Payments.Core.Withdrawals.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inflow.Modules.Payments.Core.DAL.Repositories;
 
-internal class WithdrawalRepository : IWithdrawalRepository
+internal class WithdrawalRepository(PaymentsDbContext context) : IWithdrawalRepository
 {
-    private readonly PaymentsDbContext _context;
-    private readonly DbSet<Withdrawal> _withdrawals;
-
-    public WithdrawalRepository(PaymentsDbContext context)
-    {
-        _context = context;
-        _withdrawals = _context.Withdrawals;
-    }
+    private readonly DbSet<Withdrawal> _withdrawals = context.Withdrawals;
 
     public  Task<Withdrawal> GetAsync(Guid id)
         => _withdrawals
@@ -25,12 +16,12 @@ internal class WithdrawalRepository : IWithdrawalRepository
     public async Task AddAsync(Withdrawal withdrawal)
     {
         await _withdrawals.AddAsync(withdrawal);
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(Withdrawal withdrawal)
     {
         _withdrawals.Update(withdrawal);
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 }

@@ -4,6 +4,7 @@ using Inflow.Modules.Payments.Core.Deposits.Queries;
 using Inflow.Shared.Abstractions.Contexts;
 using Inflow.Shared.Abstractions.Dispatchers;
 using Inflow.Shared.Abstractions.Queries;
+using Inflow.Shared.Infrastructure.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ internal class DepositsController(IDispatcher dispatcher, IContext context) : Co
             query.CustomerId = context.Identity.IsUser() ? context.Identity.Id : query.CustomerId;
         }
 
-        return Ok(await dispatcher.QueryAsync(query));
+        return Ok(await dispatcher.QueryAsync<Paged<DepositDto>>(query));
     }
 
     [HttpPost]

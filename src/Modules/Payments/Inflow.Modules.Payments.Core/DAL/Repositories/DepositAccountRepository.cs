@@ -1,22 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Inflow.Modules.Payments.Core.Deposits.Domain.Entities;
-using Inflow.Modules.Payments.Core.Deposits.Domain.Repositories;
+﻿using Inflow.Modules.Payments.Core.Deposits.Domain.Entities;
+using Inflow.Modules.Payments.Core.Deposits.Repositories;
 using Inflow.Shared.Abstractions.Kernel.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inflow.Modules.Payments.Core.DAL.Repositories;
 
-internal class DepositAccountRepository : IDepositAccountRepository
+internal class DepositAccountRepository(PaymentsDbContext context) : IDepositAccountRepository
 {
-    private readonly PaymentsDbContext _context;
-    private readonly DbSet<DepositAccount> _depositAccounts;
-
-    public DepositAccountRepository(PaymentsDbContext context)
-    {
-        _context = context;
-        _depositAccounts = _context.DepositAccounts;
-    }
+    private readonly DbSet<DepositAccount> _depositAccounts = context.DepositAccounts;
 
     public  Task<DepositAccount> GetAsync(Guid id)
         => _depositAccounts.SingleOrDefaultAsync(x => x.Id == id);
@@ -27,6 +18,6 @@ internal class DepositAccountRepository : IDepositAccountRepository
     public async Task AddAsync(DepositAccount depositAccount)
     {
         await _depositAccounts.AddAsync(depositAccount);
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 }

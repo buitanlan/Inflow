@@ -1,12 +1,11 @@
-﻿using System.Windows.Input;
-using Inflow.Modules.Payments.Core.Deposits.Events;
+﻿using Inflow.Modules.Payments.Core.Deposits.Events;
 using Inflow.Modules.Payments.Core.Deposits.Exceptions;
 using Inflow.Modules.Payments.Core.Deposits.Repositories;
 using Inflow.Modules.Payments.Shared.Exceptions;
 using Inflow.Modules.Payments.Shared.Repositories;
 using Inflow.Shared.Abstractions.Commands;
+using Inflow.Shared.Abstractions.Messaging;
 using Inflow.Shared.Abstractions.Time;
-using Inflow.Shared.Infrastructure.Messaging;
 using Microsoft.Extensions.Logging;
 
 namespace Inflow.Modules.Payments.Core.Deposits.Commands.Handlers;
@@ -17,7 +16,7 @@ internal sealed class StartDepositHandler(
     IDepositAccountRepository depositAccountRepository,
     IClock clock,
     IMessageBroker messageBroker,
-    ILogger<StartDepositHandler> logger): ICommandHandler<StartDeposit>
+    ILogger logger): ICommandHandler<StartDeposit>
 {
     public async Task HandleAsync(StartDeposit command, CancellationToken cancellationToken)
     {
