@@ -16,7 +16,7 @@ internal sealed class StartDepositHandler(
     IDepositAccountRepository depositAccountRepository,
     IClock clock,
     IMessageBroker messageBroker,
-    ILogger logger): ICommandHandler<StartDeposit>
+    ILogger<StartDepositHandler> logger): ICommandHandler<StartDeposit>
 {
     public async Task HandleAsync(StartDeposit command, CancellationToken cancellationToken)
     {

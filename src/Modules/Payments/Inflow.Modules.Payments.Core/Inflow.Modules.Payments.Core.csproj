@@ -4,21 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <LangVersion>Preview</LangVersion>
     </PropertyGroup>
-
-    <ItemGroup>
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\Inflow.Shared.Infrastructure\Inflow.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\Inflow.Modules.Payments.Shared\Inflow.Modules.Payments.Shared\Inflow.Modules.Payments.Shared.csproj" />
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <Folder Include="DAL\Migrations\" />
-      <Folder Include="Deposits\Domain\" />
     </ItemGroup>
 
 </Project>

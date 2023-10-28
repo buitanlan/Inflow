@@ -8,9 +8,12 @@ using Inflow.Shared.Abstractions.Time;
 
 namespace Inflow.Modules.Payments.Core.Withdrawals.Events.External.Handlers;
 
-internal sealed class DeductFundsRejectedHandler(IWithdrawalRepository withdrawalRepository,
+internal sealed class DeductFundsRejectedHandler(
+        IWithdrawalRepository withdrawalRepository,
         IMessageBroker messageBroker,
-        IWithdrawalMetadataResolver metadataResolver, IClock clock, ILogger<FundsDeductedHandler> logger)
+        IWithdrawalMetadataResolver metadataResolver,
+        IClock clock,
+        ILogger<DeductFundsRejectedHandler> logger)
     : IEventHandler<DeductFundsRejected>
 {
     private const string TransferName = "withdrawal";

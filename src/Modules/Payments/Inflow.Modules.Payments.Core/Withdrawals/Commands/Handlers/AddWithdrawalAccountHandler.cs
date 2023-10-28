@@ -18,7 +18,7 @@ internal sealed class AddWithdrawalAccountHandler(
         ICustomerRepository customerRepository,
         IMessageBroker messageBroker,
         IClock clock,
-        ILogger logger)
+        ILogger<AddWithdrawalAccountHandler> logger)
     : ICommandHandler<AddWithdrawalAccount>
 {
     public async Task HandleAsync(AddWithdrawalAccount command, CancellationToken cancellationToken = default)
@@ -47,7 +47,6 @@ internal sealed class AddWithdrawalAccountHandler(
         await withdrawalAccountRepository.AddAsync(account);
         await messageBroker.PublishAsync(new WithdrawalAccountAdded(command.AccountId, command.CustomerId,
             command.Currency), cancellationToken);
-        logger.LogInformation($"Added a withdrawal account with ID: '{command.AccountId}' " +
-                               $"for customer with ID: '{command.CustomerId}'.");
+        logger.LogInformation($"Added a withdrawal account with ID: '{command.AccountId}' for customer with ID: '{command.CustomerId}'.");
     }
 }

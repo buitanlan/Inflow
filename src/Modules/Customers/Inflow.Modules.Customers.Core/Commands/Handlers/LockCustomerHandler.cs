@@ -10,7 +10,7 @@ namespace Inflow.Modules.Customers.Core.Commands.Handlers;
 internal sealed class LockCustomerHandler(
     ICustomerRepository customerRepository,
     IMessageBroker messageBroker,
-    ILogger<LockCustomerHandler> logger) : ICommandHandler<LockCustomer>
+    ILogger<LockCustomer> logger) : ICommandHandler<LockCustomer>
 {
 
     public async Task HandleAsync(LockCustomer command, CancellationToken cancellationToken = default)

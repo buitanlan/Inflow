@@ -3,10 +3,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Inflow.Modules.Payments.Core.Withdrawals.Services;
 
-internal sealed class WithdrawalMetadataResolver(IJsonSerializer jsonSerializer,ILogger logger) : IWithdrawalMetadataResolver
+internal sealed class WithdrawalMetadataResolver(
+    IJsonSerializer jsonSerializer,
+    ILogger<WithdrawalMetadataResolver> logger) : IWithdrawalMetadataResolver
 {
-    private readonly IJsonSerializer _jsonSerializer = jsonSerializer;
-
     public Guid? TryResolveWithdrawalId(string metadata)
     {
         if (string.IsNullOrWhiteSpace(metadata))
@@ -16,7 +16,7 @@ internal sealed class WithdrawalMetadataResolver(IJsonSerializer jsonSerializer,
 
         try
         {
-            return _jsonSerializer.Deserialize<Metadata>(metadata).WithdrawalId;
+            return jsonSerializer.Deserialize<Metadata>(metadata).WithdrawalId;
         }
         catch (Exception e)
         {
