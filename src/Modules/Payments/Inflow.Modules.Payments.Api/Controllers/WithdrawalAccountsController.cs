@@ -23,8 +23,7 @@ internal class WithdrawalAccountsController(IDispatcher dispatcher, IContext con
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<ActionResult<Paged<WithdrawalAccountDto>>> BrowseAsync(
-        [FromQuery] BrowseWithdrawalAccounts query)
+    public async Task<ActionResult<Paged<WithdrawalAccountDto>>> BrowseAsync([FromQuery] BrowseWithdrawalAccounts query)
     {
         if (query.CustomerId.HasValue || context.Identity.IsUser())
         {

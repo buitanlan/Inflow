@@ -24,6 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{E3F06205-E169-475A-A1DF-805C252F4F4C}"
+	ProjectSection(SolutionItems) = preProject
+		Users.http = Users.http
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Users.Api", "src\Modules\Users\Inflow.Modules.Users.Api\Inflow.Modules.Users.Api.csproj", "{20775EF2-0B56-4C6E-B22E-6F62903719F2}"
 EndProject

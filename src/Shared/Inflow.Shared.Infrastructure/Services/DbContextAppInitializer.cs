@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Inflow.Shared.Infrastructure.Postgres;
+namespace Inflow.Shared.Infrastructure.Services;
 
 internal sealed class DbContextAppInitializer(IServiceProvider serviceProvider, ILogger<DbContextAppInitializer> logger) : IHostedService
 {
@@ -22,7 +22,7 @@ internal sealed class DbContextAppInitializer(IServiceProvider serviceProvider, 
             }
             
             logger.LogInformation($"Running dbContext for module {dbContextType.Name}");
-            await dbContext.Database.MigrateAsync(cancellationToken: cancellationToken);
+            await dbContext.Database.MigrateAsync(cancellationToken);
         }
 
         var initializers = scope.ServiceProvider.GetServices<IInitializer>();
@@ -40,8 +40,5 @@ internal sealed class DbContextAppInitializer(IServiceProvider serviceProvider, 
         }
     }
 
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
+    public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }
