@@ -1,15 +1,22 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Inflow.Shared.Abstractions.Dispatchers;
+using Inflow.Shared.Abstractions.Storage;
 using Inflow.Shared.Abstractions.Time;
 using Inflow.Shared.Infrastructure.Api;
 using Inflow.Shared.Infrastructure.Auth;
 using Inflow.Shared.Infrastructure.Commands;
+using Inflow.Shared.Infrastructure.Contexts;
+using Inflow.Shared.Infrastructure.Contracts;
 using Inflow.Shared.Infrastructure.Dispatchers;
 using Inflow.Shared.Infrastructure.Events;
+using Inflow.Shared.Infrastructure.Messaging;
 using Inflow.Shared.Infrastructure.Modules;
 using Inflow.Shared.Infrastructure.Postgres;
 using Inflow.Shared.Infrastructure.Queries;
+using Inflow.Shared.Infrastructure.Serialization;
+using Inflow.Shared.Infrastructure.Services;
+using Inflow.Shared.Infrastructure.Storage;
 using Inflow.Shared.Infrastructure.Time;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -36,21 +43,27 @@ public static class Extensions
         foreach (var (key, value) in configuration.AsEnumerable())
         {
             if(!key.Contains(":module:enabled")) continue;
-            if (!bool.Parse(value))
+            if (!bool.Parse(value ?? "false"))
             {
                 disabledModules.Add(key.Split(":")[0]);
             }
         }
+
         services
             .AddAuth()
             .AddMemoryCache()
+            .AddSingleton<IRequestStorage, RequestStorage>()
+            .AddSingleton<IJsonSerializer, SystemTextJsonSerializer>()
+            .AddSingleton<IClock, UtcClock>()
+            .AddSingleton<IDispatcher, InMemoryDispatcher>()
             .AddCommands(assemblies)
             .AddQueries(assemblies)
             .AddEvents(assemblies)
             .AddPostgres()
-            .AddSingleton<IClock, UtcClock>()
-            .AddSingleton<IDispatcher, InMemoryDispatcher>()
-            .AddModuleRequests()
+            .AddMessaging()
+            .AddContracts()
+            .AddContext()
+            .AddModuleRequests(assemblies)
             .AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {
@@ -69,15 +82,17 @@ public static class Extensions
 
                 manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
+        services.AddHostedService<DbContextAppInitializer>();
+
         return services;
     }
 
-    public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)
+    public static void UseModularInfrastructure(this IApplicationBuilder app)
     {
         app.UseAuth();
+        app.UseContext();
         app.UseRouting();
         app.UseAuthorization();
-        return app;
     }
 
     public static T GetOptions<T>(this IServiceCollection services, string sectionName) where T : class, new()

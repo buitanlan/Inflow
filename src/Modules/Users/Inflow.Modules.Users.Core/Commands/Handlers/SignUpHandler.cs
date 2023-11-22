@@ -4,8 +4,8 @@ using Inflow.Modules.Users.Core.Exceptions;
 using Inflow.Modules.Users.Core.Repositories;
 using Inflow.Shared.Abstractions;
 using Inflow.Shared.Abstractions.Commands;
+using Inflow.Shared.Abstractions.Messaging;
 using Inflow.Shared.Abstractions.Time;
-using Inflow.Shared.Infrastructure.Messaging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 

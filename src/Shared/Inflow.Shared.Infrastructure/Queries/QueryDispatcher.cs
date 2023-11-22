@@ -5,7 +5,6 @@ namespace Inflow.Shared.Infrastructure.Queries;
 
 internal sealed class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatcher
 {
-
     public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)
     {
         using var scope = serviceProvider.CreateScope();

@@ -24,11 +24,13 @@ public static class Extensions
         });
 
 
-    internal static IServiceCollection AddModuleRequests(this IServiceCollection services)
+    internal static IServiceCollection AddModuleRequests(this IServiceCollection services, IList<Assembly> assemblies)
     {
-        services.AddSingleton<IModuleSubscriber, ModuleSubscriber>();
-        services.AddSingleton<IModuleClient, ModuleClient>();
-        services.AddSingleton<IModuleSerializer, JsonModuleSerializer>();
+        services
+            .AddModuleRegistry(assemblies)
+            .AddSingleton<IModuleSubscriber, ModuleSubscriber>()
+            .AddSingleton<IModuleClient, ModuleClient>()
+            .AddSingleton<IModuleSerializer, JsonModuleSerializer>();
 
         return services;
     }

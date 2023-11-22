@@ -1,9 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-preview AS build
 WORKDIR /src
 COPY ["src/Boostrapper/Inflow.Bootstrapper/Inflow.Bootstrapper.csproj", "src/Boostrapper/Inflow.Bootstrapper/"]
 COPY ["src/Modules/Customers/Inflow.Modules.Customers.Api/Inflow.Modules.Customers.Api.csproj", "src/Modules/Customers/Inflow.Modules.Customers.Api/"]

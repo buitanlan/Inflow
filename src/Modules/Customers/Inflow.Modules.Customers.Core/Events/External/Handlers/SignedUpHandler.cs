@@ -22,7 +22,7 @@ internal sealed class SignedUpHandler(
         var customerId = @event.UserId;
         if (await customerRepository.GetAsync(customerId) is not null)
         {
-            throw new CustomerAlreadyException(customerId);
+            throw new CustomerAlreadyExistsException(customerId);
         }
         var customer = new Customer(Guid.NewGuid(), @event.Email, clock.CurrentDate());
         await customerRepository.AddAsync(customer);

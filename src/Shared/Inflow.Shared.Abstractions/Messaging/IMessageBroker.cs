@@ -1,6 +1,4 @@
-﻿using Inflow.Shared.Abstractions.Messaging;
-
-namespace Inflow.Shared.Infrastructure.Messaging;
+﻿namespace Inflow.Shared.Abstractions.Messaging;
 
 public interface IMessageBroker
 {

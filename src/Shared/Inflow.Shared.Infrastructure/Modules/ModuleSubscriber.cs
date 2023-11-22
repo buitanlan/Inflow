@@ -5,7 +5,9 @@ namespace Inflow.Shared.Infrastructure.Modules;
 
 internal sealed class ModuleSubscriber(IModuleRegistry moduleRegistry, IServiceProvider serviceProvider) : IModuleSubscriber
 {
-    public IModuleSubscriber Subscribe<TRequest, TResponse>(string path, Func<TRequest, IServiceProvider, CancellationToken, Task<TResponse>> action) where TRequest : class where TResponse : class
+    public IModuleSubscriber Subscribe<TRequest, TResponse>(string path, Func<TRequest, IServiceProvider, CancellationToken, Task<TResponse>> action)
+        where TRequest : class
+        where TResponse : class
     {
         var registration = new ModuleRequestRegistration(typeof(TRequest), typeof(TResponse),
             async (request, cancellationToken) =>
