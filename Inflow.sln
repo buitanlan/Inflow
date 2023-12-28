@@ -40,6 +40,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Payments.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Payments.Shared", "src\Modules\Payments\Inflow.Modules.Payments.Shared\Inflow.Modules.Payments.Shared\Inflow.Modules.Payments.Shared.csproj", "{AD0E2EFF-1D69-4277-89E8-9432CAB87157}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wallets", "Wallets", "{D2369BB3-61AE-459F-B9D7-5DA0D8E2F752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Wallets.Api", "src\Modules\Wallets\Inflow.Modules.Wallets.Api\Inflow.Modules.Wallets.Api.csproj", "{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Wallets.Application", "src\Modules\Wallets\Inflow.Modules.Wallets.Application\Inflow.Modules.Wallets.Application.csproj", "{F0CFB56A-928B-4C75-961C-94924F8A7D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Wallets.Core", "src\Modules\Wallets\Inflow.Modules.Wallets.Core\Inflow.Modules.Wallets.Core.csproj", "{0FABB3C0-F925-46B7-A8B6-41EBCC774911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inflow.Modules.Wallets.Infrastructure", "src\Modules\Wallets\Inflow.Modules.Wallets.Infrastructure\Inflow.Modules.Wallets.Infrastructure.csproj", "{7577BF79-0447-4D48-8C36-057EE4AAF4A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +69,11 @@ Global
 		{D81F01AA-F08B-4425-A335-E93C61A48D9B} = {E8B8BA31-38E8-4BA0-B2E6-ED3363F05AA2}
 		{07706B89-558E-4B70-93AF-517DF6260185} = {E8B8BA31-38E8-4BA0-B2E6-ED3363F05AA2}
 		{AD0E2EFF-1D69-4277-89E8-9432CAB87157} = {E8B8BA31-38E8-4BA0-B2E6-ED3363F05AA2}
+		{D2369BB3-61AE-459F-B9D7-5DA0D8E2F752} = {528553FF-DFBF-489A-99A9-957A1DFA000A}
+		{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC} = {D2369BB3-61AE-459F-B9D7-5DA0D8E2F752}
+		{F0CFB56A-928B-4C75-961C-94924F8A7D31} = {D2369BB3-61AE-459F-B9D7-5DA0D8E2F752}
+		{0FABB3C0-F925-46B7-A8B6-41EBCC774911} = {D2369BB3-61AE-459F-B9D7-5DA0D8E2F752}
+		{7577BF79-0447-4D48-8C36-057EE4AAF4A7} = {D2369BB3-61AE-459F-B9D7-5DA0D8E2F752}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{518446CE-42B1-4017-A68E-5603A0490347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -101,5 +116,21 @@ Global
 		{AD0E2EFF-1D69-4277-89E8-9432CAB87157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0E2EFF-1D69-4277-89E8-9432CAB87157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0E2EFF-1D69-4277-89E8-9432CAB87157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC105E5-EA4C-4249-B3C9-7EC8BAA341BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0CFB56A-928B-4C75-961C-94924F8A7D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CFB56A-928B-4C75-961C-94924F8A7D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CFB56A-928B-4C75-961C-94924F8A7D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CFB56A-928B-4C75-961C-94924F8A7D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FABB3C0-F925-46B7-A8B6-41EBCC774911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FABB3C0-F925-46B7-A8B6-41EBCC774911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FABB3C0-F925-46B7-A8B6-41EBCC774911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FABB3C0-F925-46B7-A8B6-41EBCC774911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7577BF79-0447-4D48-8C36-057EE4AAF4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7577BF79-0447-4D48-8C36-057EE4AAF4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7577BF79-0447-4D48-8C36-057EE4AAF4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7577BF79-0447-4D48-8C36-057EE4AAF4A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

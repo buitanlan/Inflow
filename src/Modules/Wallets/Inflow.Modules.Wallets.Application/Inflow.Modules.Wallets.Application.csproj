@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Owners\Events\External\Handlers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Inflow.Modules.Wallets.Core\Inflow.Modules.Wallets.Core.csproj" />
+    </ItemGroup>
+
+</Project>
