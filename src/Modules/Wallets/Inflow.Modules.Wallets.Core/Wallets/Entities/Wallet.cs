@@ -9,7 +9,7 @@ namespace Inflow.Modules.Wallets.Core.Wallets.Entities;
 
 internal class Wallet : AggregateRoot<WalletId>
 {
-    private HashSet<Transfer> _transfers = new();
+    private HashSet<Transfer> _transfers = [];
 
     public OwnerId OwnerId { get; private set; }
     public Currency Currency { get; private set; }
@@ -17,7 +17,7 @@ internal class Wallet : AggregateRoot<WalletId>
     public IEnumerable<Transfer> Transfers
     {
         get => _transfers;
-        set => _transfers = new HashSet<Transfer>(value);
+        set => _transfers = [..value];
     }
 
     public DateTime CreatedAt { get; private set; }

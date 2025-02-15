@@ -4,10 +4,7 @@ namespace Inflow.Modules.Customers.Core.Domain.ValueObjects;
 
 internal class Identity : IEquatable<Identity>
 {
-    private static readonly HashSet<string> AllowedTypes = new()
-    {
-        "passport", "id_card", "drivers_license"
-    };
+    private static readonly HashSet<string> AllowedTypes = ["passport", "id_card", "drivers_license"];
         
     public string Type { get; }
     public string Series { get; }

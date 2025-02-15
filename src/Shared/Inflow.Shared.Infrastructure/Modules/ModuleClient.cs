@@ -9,7 +9,7 @@ internal sealed class ModuleClient(IModuleRegistry moduleRegistry, IModuleSerial
         var registration = moduleRegistry.GetRequestRegistration(path);
         if (registration is null)
         {
-            throw new InvalidOperationException($"No action has been definded for path : {path}");
+            throw new InvalidOperationException($"No action has been defined for path : {path}");
         }
 
         var receiverRequest = TranslateType(request, registration.RequestType);

@@ -13,6 +13,6 @@ internal sealed class QueryDispatcher(IServiceProvider serviceProvider) : IQuery
         var method = handlerType.GetMethod(nameof(IQueryHandler<IQuery<TResult>, TResult>.HandleAsync));
         if (method is null) 
             throw new InvalidOperationException("Query handler is invalid");
-        return await (Task<TResult>)method.Invoke(handler, new object[] {query, cancellationToken});    
+        return await (Task<TResult>)method.Invoke(handler, [query, cancellationToken]);    
     }
 }

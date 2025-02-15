@@ -6,12 +6,12 @@ public class AggregateRoot<T>
     public int Version { get; protected set; } = 1;
     public IEnumerable<IDomainEvent> Events => _events;
 
-    private readonly List<IDomainEvent> _events = new();
+    private readonly List<IDomainEvent> _events = [];
     private bool _versionIncremented;
 
     protected void AddEvent(IDomainEvent @event)
     {
-        if (!_events.Any() && !_versionIncremented)
+        if (_events.Count == 0 && !_versionIncremented)
         {
             Version++;
             _versionIncremented = true;

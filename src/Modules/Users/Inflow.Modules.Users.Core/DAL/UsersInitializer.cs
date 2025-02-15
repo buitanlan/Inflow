@@ -7,13 +7,7 @@ namespace Inflow.Modules.Users.Core.DAL;
 
 internal sealed class UsersInitializer(UsersDbContext dbContext, ILogger<UsersInitializer> logger) : IInitializer
 {
-    private readonly HashSet<string> _permissions = new()
-    {
-        "customers",
-        "deposits", "withdrawals",
-        "users",
-        "transfers", "wallets"
-    };
+    private readonly HashSet<string> _permissions = ["customers", "deposits", "withdrawals", "users", "transfers", "wallets"];
 
     public async Task InitAsync()
     {

@@ -3,7 +3,7 @@ namespace Inflow.Shared.Infrastructure.Modules;
 internal class ModuleRegistry: IModuleRegistry
 {
     private readonly Dictionary<string, ModuleRequestRegistration> _requestRegistrations = new();
-    private readonly List<ModuleBroadcastRegistration> _broadcastRegistrations = new();
+    private readonly List<ModuleBroadcastRegistration> _broadcastRegistrations = [];
 
     public IEnumerable<ModuleBroadcastRegistration> GetBroadcastRegistration(string key)
         => _broadcastRegistrations.Where(x => x.Key == key);

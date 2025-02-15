@@ -53,7 +53,7 @@ public static class Extensions
                 var registration = new ModuleBroadcastRegistration(type, (@event, cancellationToken) =>
                     (Task)commandDispatcher.GetType().GetMethod(nameof(commandDispatcher.SendAsync))
                         ?.MakeGenericMethod(type)
-                        .Invoke(commandDispatcher, new[] { @event, cancellationToken }));
+                        .Invoke(commandDispatcher, [@event, cancellationToken]));
                 registry.AddBroadcastAction(registration);
             }
 
@@ -62,7 +62,7 @@ public static class Extensions
                 var registration = new ModuleBroadcastRegistration(type, (@event, cancellationToken) =>
                     (Task)eventDispatcher.GetType().GetMethod(nameof(eventDispatcher.PublishAsync))
                         ?.MakeGenericMethod(type)
-                        .Invoke(eventDispatcher, new[] { @event, cancellationToken }));
+                        .Invoke(eventDispatcher, [@event, cancellationToken]));
                 registry.AddBroadcastAction(registration);
             }
 

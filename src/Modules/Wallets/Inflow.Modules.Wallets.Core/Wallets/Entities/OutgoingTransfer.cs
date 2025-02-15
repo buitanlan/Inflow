@@ -10,9 +10,15 @@ internal class OutgoingTransfer : Transfer
     {
     }
 
-    public OutgoingTransfer(TransferId id, WalletId walletId, Currency currency, Amount amount, DateTime createdAt,
-        TransferName name = null, TransferMetadata metadata = null) : base(id, walletId, currency, amount,
+    public OutgoingTransfer(
+        TransferId id,
+        WalletId walletId,
+        Currency currency, Amount amount,
+        DateTime createdAt,
+        TransferName name = null,
+        TransferMetadata metadata = null) : base(id, walletId, currency, amount,
         createdAt, name, metadata)
     {
+
     }
 }

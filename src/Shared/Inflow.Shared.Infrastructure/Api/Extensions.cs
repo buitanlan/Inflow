@@ -24,9 +24,9 @@ public static class Extensions
         }
 
         var propertyName = memberExpressions.Member.Name.ToLowerInvariant();
-        var modelType = model.GetType();
-        var field = modelType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
-            .SingleOrDefault(x => x.Name.ToLowerInvariant().StartsWith($"<{propertyName}>"));
+        var modelType = model?.GetType();
+        var field = modelType?.GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+            .SingleOrDefault(x => x.Name.StartsWith($"<{propertyName}>", StringComparison.InvariantCultureIgnoreCase));
 
         if (field is null)
         {

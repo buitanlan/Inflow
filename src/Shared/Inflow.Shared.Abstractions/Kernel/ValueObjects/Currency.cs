@@ -4,10 +4,7 @@ namespace Inflow.Shared.Abstractions.Kernel.ValueObjects;
 
 public class Currency : IEquatable<Currency>
 {
-    private static readonly HashSet<string> AllowedValues = new()
-    {
-        "PLN", "EUR", "GBP"
-    };
+    private static readonly HashSet<string> AllowedValues = ["PLN", "EUR", "GBP"];
 
     public string Value { get; }
         

@@ -4,10 +4,7 @@ namespace Inflow.Shared.Abstractions.Kernel.ValueObjects;
 
 public class Nationality : IEquatable<Nationality>
 {
-    private static readonly HashSet<string> AllowedValues = new()
-    {
-        "PL", "DE", "FR", "ES", "GB"
-    };
+    private static readonly HashSet<string> AllowedValues = ["PL", "DE", "FR", "ES", "GB"];
 
     public string Value { get; }
         
