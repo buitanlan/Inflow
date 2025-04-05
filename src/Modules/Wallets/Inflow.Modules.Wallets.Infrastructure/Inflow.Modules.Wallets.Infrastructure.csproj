@@ -8,8 +8,6 @@
 
     <ItemGroup>
       <Folder Include="EF\Configurations\" />
-      <Folder Include="EF\Repositories\" />
-      <Folder Include="Storage\" />
     </ItemGroup>
 
     <ItemGroup>

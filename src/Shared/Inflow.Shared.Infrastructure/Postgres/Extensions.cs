@@ -2,7 +2,6 @@ using Inflow.Shared.Infrastructure.Postgres.Decorators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Inflow.Shared.Abstractions.Commands;
-// using Inflow.Shared.Abstractions.Events;
 using Inflow.Shared.Abstractions.Queries;
 
 namespace Inflow.Shared.Infrastructure.Postgres;

@@ -133,4 +133,20 @@ public static class Extensions
         
     public static Guid? TryGetCorrelationId(this HttpContext context)
         => context.Items.TryGetValue(CorrelationIdKey, out var id) ? (Guid) id : null;
+    
+    public static IServiceCollection TryDecorate(this IServiceCollection services, Type serviceType, Type decoratorType)
+    {
+        var descriptor = services.FirstOrDefault(d => d.ServiceType == serviceType);
+        if (descriptor == null) return services;
+        // Remove the existing registration
+        services.Remove(descriptor);
+
+        // Register the decorator
+        services.AddScoped(serviceType, provider =>
+        {
+            var originalInstance = provider.GetRequiredService(descriptor.ImplementationType!);
+            return ActivatorUtilities.CreateInstance(provider, decoratorType, originalInstance);
+        });
+        return services;
+    }
 }
